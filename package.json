@@ -1,0 +1,25 @@
+{
+  "name": "webpack-config-builder",
+  "version": "1.0.0",
+  "description": "Splitting your Webpack config into smaller parts",
+  "main": "dist/webpack-config-builder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostney/webpack-config-builder.git"
+  },
+  "keywords": [
+    "webpack",
+    "config",
+    "load",
+    "split"
+  ],
+  "author": "Johannes Stein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frostney/webpack-config-builder/issues"
+  },
+  "homepage": "https://github.com/frostney/webpack-config-builder#readme"
+}
