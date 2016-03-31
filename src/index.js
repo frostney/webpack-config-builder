@@ -5,8 +5,8 @@ import objectAssign from 'object-assign';
 const DEFAULT_FOLDER = './webpack';
 const DEFAULT_ARGS = { folder: DEFAULT_FOLDER };
 
-const webpackConfigBuilder = ({ folder = DEFAULT_FOLDER, options } = DEFAULT_ARGS) => {
-  const webpackConfig = {};
+const filesToObject = (folder, options) => {
+  const obj = {};
 
   const files = fs.readdirSync(folder);
 
@@ -14,28 +14,42 @@ const webpackConfigBuilder = ({ folder = DEFAULT_FOLDER, options } = DEFAULT_ARG
     const basename = path.basename(file);
     const extension = path.extname(file);
 
-    const propertyName = basename.split(extension)[0];
+    if (extension === '.js' || extension === '.json') {
+      const propertyName = basename.split(extension)[0];
 
-    const importedModule = require(path.resolve(process.cwd(), path.join(folder, file)));
+      const requirePath = path.resolve(process.cwd(), path.join(folder, file));
+      const importedModule = require(requirePath);
+      const isES2015Module = importedModule && importedModule.default;
+      const moduleValue = (isES2015Module) ? importedModule.default : importedModule;
 
-    let propertyValue = null;
+      let propertyValue = null;
 
-    if (typeof importedModule === 'function') {
-      propertyValue = importedModule(options);
-    } else {
-      propertyValue = importedModule;
-    }
-
-    if (propertyValue) {
-      if (propertyName === 'base') {
-        objectAssign(webpackConfig, propertyValue);
+      if (typeof importedModule === 'function') {
+        propertyValue = moduleValue(options);
       } else {
-        webpackConfig[propertyName] = propertyValue;
+        propertyValue = moduleValue;
+      }
+
+      if (propertyValue) {
+        if (propertyName === 'base') {
+          objectAssign(obj, propertyValue);
+        } else {
+          obj[propertyName] = propertyValue;
+        }
+      }
+    } else {
+      const stats = fs.statSync(path.resolve(process.cwd(), path.join(folder, basename)));
+
+      if (stats.isDirectory()) {
+        obj[basename] = filesToObject(path.join(folder, basename), options);
       }
     }
   });
 
-  return webpackConfig;
+  return obj;
 };
+
+const webpackConfigBuilder = ({ folder = DEFAULT_FOLDER, options } = DEFAULT_ARGS) =>
+  filesToObject(folder, options);
 
 export default webpackConfigBuilder;
