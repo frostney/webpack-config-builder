@@ -6,10 +6,12 @@
   "jsnext:main": "dist/webpack-config-builder.es2015.js",
   "bin": "bin/index.js",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "rollup-babel-lib-bundler src/index.js -f cjs,es6",
     "prepublish": "in-publish && npm run build || not-in-publish",
     "lint": "eslint src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava --verbose 'src/**/*.test.js'",
+    "coverage": "nyc --reporter lcov --reporter html ava 'src/**/*.test.js'"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,17 @@
     "load",
     "split"
   ],
+  "ava": {
+    "babel": "inherit",
+    "require": ["babel-register"]
+  },
+  "rollupBabelLibBundler": {
+    "babel": {
+      "presets": [
+        "es2015-loose"
+      ]
+    }
+  },
   "author": "Johannes Stein",
   "license": "MIT",
   "bugs": {
@@ -32,12 +45,17 @@
   },
   "homepage": "https://github.com/frostney/webpack-config-builder#readme",
   "devDependencies": {
+    "ava": "^0.13.0",
+    "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-es2015-loose-rollup": "^7.0.0",
+    "babel-register": "^6.7.2",
     "eslint": "^2.4.0",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-plugin-react": "^4.2.3",
     "in-publish": "^2.0.0",
-    "rollup-babel-lib-bundler": "^2.3.4"
+    "nyc": "^6.1.1",
+    "rimraf": "^2.5.2",
+    "rollup-babel-lib-bundler": "^2.5.5"
   },
   "dependencies": {
     "object-assign": "^4.0.1"
