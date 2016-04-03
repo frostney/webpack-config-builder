@@ -4,7 +4,6 @@
   "description": "Splitting your Webpack config into smaller parts",
   "main": "dist/webpack-config-builder.js",
   "jsnext:main": "dist/webpack-config-builder.es2015.js",
-  "bin": "bin/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup-babel-lib-bundler src/index.js -f cjs,es6",
