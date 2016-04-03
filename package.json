@@ -34,7 +34,7 @@
   "rollupBabelLibBundler": {
     "babel": {
       "presets": [
-        "es2015-loose"
+        "es2015-loose-rollup"
       ]
     }
   },
