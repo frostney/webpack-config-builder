@@ -5,7 +5,7 @@ Split your webpack config into multiple smaller parts
 
 > Smaller is more maintainable
 
-You guys remember when we had Grunt everywhere? Our single Gruntfile kept getting growing and growing. Then we began splitting our Grunt configs. Now with Webpack we have to keep track of development, distribution config and if we're also targeting server, we're managing a lot of different config sharing some bits here and there.
+You all remember when we had Grunt everywhere? Our single Gruntfile kept getting growing and growing. Then we began splitting our Grunt configs. Now with Webpack we have to keep track of development, distribution config and if we're also targeting server, we're managing a lot of different config sharing some bits here and there.
 
 ## Installation
 ```
