@@ -1,6 +1,6 @@
 {
   "name": "webpack-config-builder",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Splitting your Webpack config into smaller parts",
   "main": "dist/webpack-config-builder.js",
   "jsnext:main": "dist/webpack-config-builder.es2015.js",
@@ -46,18 +46,18 @@
   },
   "homepage": "https://github.com/frostney/webpack-config-builder#readme",
   "devDependencies": {
-    "ava": "^0.13.0",
+    "ava": "^0.14.0",
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-es2015-loose-rollup": "^7.0.0",
     "babel-register": "^6.7.2",
     "codecov": "^1.0.1",
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-base": "^1.0.4",
+    "eslint-plugin-import": "^1.6.0",
     "in-publish": "^2.0.0",
-    "nyc": "^6.1.1",
+    "nyc": "^6.4.0",
     "rimraf": "^2.5.2",
-    "rollup-babel-lib-bundler": "^2.5.5"
+    "rollup-babel-lib-bundler": "^2.6.2"
   },
   "dependencies": {
     "object-assign": "^4.0.1"

@@ -1,3 +1,5 @@
+/* eslint import/no-unresolved:0 */
+
 import fs from 'fs';
 import path from 'path';
 import objectAssign from 'object-assign';
@@ -11,6 +13,7 @@ const filesToObject = (folder, options) => {
   const files = fs.readdirSync(folder);
 
   files.forEach(file => {
+    /* eslint global-require:0 */
     const basename = path.basename(file);
     const extension = path.extname(file);
 
