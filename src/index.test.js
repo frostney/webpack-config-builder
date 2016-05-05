@@ -10,7 +10,7 @@ test('nested properties', t => {
     },
   });
 
-  t.ok(config.module.loaders);
+  t.truthy(config.module.loaders);
 });
 
 test('call with production flag', t => {

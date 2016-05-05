@@ -24,7 +24,7 @@ const filesToObject = (folder, exclude, options) => {
 
       const requirePath = path.resolve(process.cwd(), path.join(folder, file));
 
-      if (excludedFiles.indexOf(requirePath) >= 0) {
+      if (excludedFiles && excludedFiles.indexOf(requirePath) >= 0) {
         return;
       }
 
@@ -51,7 +51,7 @@ const filesToObject = (folder, exclude, options) => {
       const stats = fs.statSync(path.resolve(process.cwd(), path.join(folder, basename)));
 
       if (stats.isDirectory()) {
-        obj[basename] = filesToObject(path.join(folder, basename), options);
+        obj[basename] = filesToObject(path.join(folder, basename), exclude, options);
       }
     }
   });
