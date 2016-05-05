@@ -49,17 +49,17 @@
     "ava": "^0.14.0",
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-es2015-loose-rollup": "^7.0.0",
-    "babel-register": "^6.7.2",
+    "babel-register": "^6.8.0",
     "codecov": "^1.0.1",
-    "eslint": "^2.8.0",
-    "eslint-config-airbnb-base": "^1.0.4",
-    "eslint-plugin-import": "^1.6.0",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb-base": "^2.0.0",
+    "eslint-plugin-import": "^1.6.1",
     "in-publish": "^2.0.0",
-    "nyc": "^6.4.0",
+    "nyc": "^6.4.2",
     "rimraf": "^2.5.2",
-    "rollup-babel-lib-bundler": "^2.6.2"
+    "rollup-babel-lib-bundler": "^3.0.1"
   },
   "dependencies": {
-    "object-assign": "^4.0.1"
+    "object-assign": "^4.1.0"
   }
 }
