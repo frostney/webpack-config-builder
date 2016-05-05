@@ -7,10 +7,12 @@ import objectAssign from 'object-assign';
 const DEFAULT_FOLDER = './webpack';
 const DEFAULT_ARGS = { folder: DEFAULT_FOLDER };
 
-const filesToObject = (folder, options) => {
+const filesToObject = (folder, exclude, options) => {
   const obj = {};
 
   const files = fs.readdirSync(folder);
+
+  const excludedFiles = (exclude || []).forEach(file => path.resolve(process.cwd(), file));
 
   files.forEach(file => {
     /* eslint global-require:0 */
@@ -21,6 +23,11 @@ const filesToObject = (folder, options) => {
       const propertyName = basename.split(extension)[0];
 
       const requirePath = path.resolve(process.cwd(), path.join(folder, file));
+
+      if (excludedFiles.indexOf(requirePath) >= 0) {
+        return;
+      }
+
       const importedModule = require(requirePath);
       const isES2015Module = importedModule && importedModule.default;
       const moduleValue = (isES2015Module) ? importedModule.default : importedModule;
@@ -52,7 +59,11 @@ const filesToObject = (folder, options) => {
   return obj;
 };
 
-const webpackConfigBuilder = ({ folder = DEFAULT_FOLDER, options } = DEFAULT_ARGS) =>
-  filesToObject(folder, options);
+const webpackConfigBuilder = ({
+  folder = DEFAULT_FOLDER,
+  exclude = [],
+  options,
+} = DEFAULT_ARGS) =>
+  filesToObject(folder, exclude, options);
 
 export default webpackConfigBuilder;
