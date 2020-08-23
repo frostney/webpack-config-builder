@@ -1,6 +1,8 @@
 # webpack-config-builder
 Split your webpack config into multiple smaller parts
 
+This project is unsupported. Please use [webpack-merge](https://github.com/survivejs/webpack-merge) instead.
+
 [![Build Status](https://travis-ci.org/frostney/webpack-config-builder.svg?branch=master)](https://travis-ci.org/frostney/webpack-config-builder) [![Dependency Status](https://david-dm.org/frostney/webpack-config-builder.svg)](https://david-dm.org/frostney/webpack-config-builder) [![devDependency Status](https://david-dm.org/frostney/webpack-config-builder/dev-status.svg)](https://david-dm.org/frostney/webpack-config-builder#info=devDependencies) [![codecov.io](https://codecov.io/github/frostney/webpack-config-builder/coverage.svg?branch=master)](https://codecov.io/github/frostney/webpack-config-builder?branch=master)
 
 > Smaller is more maintainable
